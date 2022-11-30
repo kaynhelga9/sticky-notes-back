@@ -1,11 +1,25 @@
+// libs
+const path = require("path");
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+// user libs
+const { logger } = require("./middleware/logger");
+const errorHandler = require("./middleware/errorHandler");
+const corsOptions = require('./config/corsOptions')
+
+// init server
 const express = require("express");
 const app = express();
-const path = require("path");
+const PORT = process.env.PORT || 3500;
 
-const PORT = process.env.PORT || 8000;
+// init logger/middleware
+app.use(logger);
+app.use("/", express.static(path.join(__dirname, "public")));
+app.use(express.json());
+app.use(cookieParser())
+app.use(cors(corsOptions))
 
-app.use("/", express.static(path.join(__dirname, "/public")));
-
+// routing
 app.use("/", require("./routes/root"));
 
 // not found pages
@@ -20,6 +34,10 @@ app.all("*", (req, res) => {
 	}
 });
 
+// log errors
+app.use(errorHandler);
+
+// start
 app.listen(PORT, () => {
 	console.log(`running on port ${PORT}`);
 });
