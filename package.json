@@ -1,0 +1,27 @@
+{
+  "name": "sticky-notes",
+  "version": "1.0.0",
+  "description": "built on MERN",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaynhelga9/sticky-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaynhelga9/sticky-notes/issues"
+  },
+  "homepage": "https://github.com/kaynhelga9/sticky-notes#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
