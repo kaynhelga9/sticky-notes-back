@@ -12,6 +12,7 @@ const connectDB = require("./config/dbConn");
 
 // init server
 const express = require("express");
+const allowedOrigins = require("./config/allowedOrigins");
 const app = express();
 const PORT = process.env.PORT || 3500;
 
@@ -27,6 +28,8 @@ app.use(cors(corsOptions));
 
 // routing
 app.use("/", require("./routes/root"));
+app.use('/users', require('./routes/userRoutes'))
+app.use('/notes', require('./routes/noteRoutes'))
 
 // not found pages
 app.all("*", (req, res) => {
