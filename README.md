@@ -1,0 +1,4 @@
+- mongodb/mongoose
+- express
+- node
+- mvc structure
